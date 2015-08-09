@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>    
+  </head>
+  <body>
+    <h1> Hello Firebase - Testing read</h1>
+    Open console to see data!
+    <script>
+        // Get a database reference to our posts
+        var ref = new Firebase("https://docs-examples.firebaseio.com/web/saving-data/fireblog/posts");
+        // Attach an asynchronous callback to read the data at our posts reference
+        ref.on("value", function(snapshot) {
+          snapshot.forEach(function(childSnapshot) {
+            // key will be "fred" the first time and "barney" the second time
+            var key = childSnapshot.key();
+            // childData will be the actual contents of the child
+            var childData = childSnapshot.val();
+            console.log(childData);
+          });
+        }, function (errorObject) {
+          console.log("The read failed: " + errorObject.code);
+        });
+    </script>
+  </body>
+</html>
