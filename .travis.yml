@@ -8,4 +8,5 @@ install:
   - npm install -g firebase-import
 after_success:
   - firebase deploy --token ${FIREBASE_TOKEN}
-  - firebase-import --firebase_url https://hellofirebasemaro.firebaseio.com --json test.json
+  - firebase-import --firebase_url https://hellofirebasemaro.firebaseio.com --json test.json --merge
+  - echo '\n'
